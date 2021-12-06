@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>moutzouris-online</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link rel="stylesheet" href="login.css">
+
+</head>
+
+<body>
+    <!-- partial:index.partial.html -->
+    <div id="login-form-wrap">
+        <h2>Login</h2>
+        <form id="form-login" action="src/api/login.php" method="post"> 
+            <p>
+                <input class="form-control" type="text" id="username" name="username" placeholder="Username" required><i
+                    class="validation"><span></span><span></span></i>
+            </p>
+            <p>
+                <input class="form-control" type="password" id="password" name="password" required><i class="validation"><span></span><span></span></i>
+            </p>
+            <p>
+                <input class="btn btn-info" type="button" name="login" id="login" value="Log In">
+            </p>
+            <p id="response"></p>
+        </form>
+        <div id="create-account-wrap">
+            <p>Not a member? <a href="Register/">Create Account</a>
+            <p>
+        </div>
+        <!--create-account-wrap-->
+    </div>
+    <!--login-form-wrap-->
+    <!-- partial -->
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+            console.log('page ok')
+            $('#login').on('click', function () {
+                var username = $('#username').val()
+                var passwd = $('#password').val()
+                if (username == "" || password == "")
+                    alert('Please insert proper data')
+                else {
+                    $.ajax({
+                        url: 'src/api/login.php',
+                        method: 'POST',
+                        data: {
+                            login: 1,
+                            usernamePHP: username,
+                            passwordPHP: passwd
+                        },
+                        success: function (response) {
+                            $('#response').html(response)
+                            if (response.indexOf('success') >= 0) {
+                                window.location = 'Board/index.php'
+                            }
+                        },
+                        dataType: 'text'
+                    })
+                }
+            })
+        })
+</script>
+</body>
+
+</html>
