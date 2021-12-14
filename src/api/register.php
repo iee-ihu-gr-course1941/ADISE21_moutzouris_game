@@ -1,6 +1,8 @@
 <?php
 session_start();
+echo 'waiting login';
 if(isset($_POST['login'])){
+    echo 'login set!';
     include '../config/db.php';
     $username= $_POST['usernamePHP'];
     $passwd = strtolower(sha1($_POST['passwordPHP']));
