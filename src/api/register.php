@@ -6,6 +6,7 @@ if(isset($_POST['login'])){
     include '../config/db.php';
     $username= $_POST['usernamePHP'];
     $passwd = strtolower(sha1($_POST['passwordPHP']));
+    // $passwd = $_POST['passwordPHP'];
     $email =  $_POST['emailPHP'];
     $stmt = $conn->prepare("INSERT INTO users(username,password,email) VALUES(?,?,?)");
     $stmt->bind_param("sss",$username,$passwd,$email);
