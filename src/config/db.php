@@ -1,5 +1,8 @@
 <?php
+// localhost connection
+// $conn = new mysqli('localhost','adse21','adse21','moutz_tests');
 
+// users.iee.ihu connection
 $user = 'root';
 $passwd = 'adse21';
 $host='localhost';

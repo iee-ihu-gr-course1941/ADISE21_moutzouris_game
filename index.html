@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <title>moutzouris-online</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="src/css/login.css">
 
 </head>
 
@@ -55,9 +55,7 @@
                         },
                         success: function (response) {
                             $('#response').html(response)
-                            if (response.indexOf('success') >= 0) {
-                                window.location = 'Board/'
-                            }
+                                window.location = './Queue/'
                         },
                         dataType: 'text'
                     })
