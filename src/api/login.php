@@ -9,8 +9,6 @@ session_start();
     }
     if(isset($_POST['login'])){
         include '../config/db.php';
-        // $conn = new mysqli('localhost','adse21','adse21','moutz_tests');
-
         $username = $conn->real_escape_string($_POST['usernamePHP']);
         $passwd = strtolower(sha1($conn->real_escape_string($_POST['passwordPHP'])));
 
