@@ -1,17 +1,14 @@
 <?php
 session_start();
-if(isset($_POST['login'])){
+
+function createUser($user){
     include '../config/db.php';
-    $username= $_POST['usernamePHP'];
-    $passwd = strtolower(sha1($_POST['passwordPHP']));
-    $email =  $_POST['emailPHP'];
-    $stmt = $conn->prepare("INSERT INTO users(username,password,email) VALUES(?,?,?)");
+    $username= $user['username'];
+    $passwd = $user['password'];
+    $email =  $user['email'];
+    $sql = "INSERT INTO users(username,password,email) VALUES(?,?,?)";
+    $stmt = $conn->prepare($sql);
     $stmt->bind_param("sss",$username,$passwd,$email);
     $stmt->execute();
-    $_SESSION['loggedIn'] = 1;
-    $_SESSION['username'] = $username;
-    exit('Registration Succesfull!');
+    return $conn->insert_id;
 }
-
-
-
