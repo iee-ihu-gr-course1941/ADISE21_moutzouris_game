@@ -12,3 +12,4 @@ $conn = new mysqli('localhost','adse21','adse21','moutz_tests');
 // if ($conn->connect_errno) {
 //     echo "Failed to connect to MySQL: (" . $conn->connect_errno . ") " . $conn->connect_error;
 // }
+
