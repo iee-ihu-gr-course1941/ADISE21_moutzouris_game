@@ -2,11 +2,11 @@
     session_start();
 
     if (!isset($_SESSION['loggedIn'])){
-        header('location: ../login.php');
+        header('location: ../');
         exit();
     }
 
-    echo ' u are logged in! ' . $_SESSION['username'];
+    echo ' u are logged in! ' . $_SESSION['username'] . ',' . $_SESSION['uid'];
 ?>
 
 <!DOCTYPE html>

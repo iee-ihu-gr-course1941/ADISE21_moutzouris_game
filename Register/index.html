@@ -6,7 +6,9 @@
     <title>moutzouris-online</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
     <link rel="stylesheet" href="../src/css/login.css">
-
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="../src/js/register.js"></script>
 </head>
 
 <body>
@@ -19,8 +21,8 @@
                     class="validation"><span></span><span></span></i>
             </p>
             <p>
-                <input class="form-control" type="password" id="password" name="password" placeholder="password" required><i
-                    class="validation"><span></span><span></span></i>
+                <input class="form-control" type="password" id="password" name="password" placeholder="password"
+                    required><i class="validation"><span></span><span></span></i>
             </p>
             <p>
                 <input class="form-control" type="email" id="email" name="email" placeholder="Email" required><i
@@ -29,7 +31,7 @@
             <p>
                 <input class="btn btn-info" type="button" name="register" id="register" value="Register">
             </p>
-            
+
         </form>
         <div id="create-account-wrap">
             <p>Already a member <a href="../">Sign In!</a>
@@ -41,36 +43,7 @@
     <!-- partial -->
 
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-<script>
-     $(document).ready(function () {
-            console.log('page ok')
-            $('#register').on('click', function () {
-                var username = $('#username').val()
-                var passwd = $('#password').val()
-                var email = $('#email').val()
-                if (username == "" || password == "" || email == "")
-                    alert('Please insert proper data')
-                else {
-                    $.ajax({
-                        url: '../src/api/register.php',
-                        method: 'POST',
-                        data: {
-                            login: 1,
-                            usernamePHP: username,
-                            passwordPHP: passwd,
-                            emailPHP   : email
-                        },
-                        success: function () {
-                                window.location = '../Queue/index.php'
-                        },
-                        dataType: 'text'
-                    })
-                }
-            })
-        })
-</script>
+
 </body>
 
 </html>
-

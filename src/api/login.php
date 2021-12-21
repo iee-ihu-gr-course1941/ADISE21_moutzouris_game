@@ -7,24 +7,13 @@ session_start();
         header('location: ../../Queue/index.php');
         exit();
     }
-    if(isset($_POST['login'])){
+    
+    function readUser($user,$pass){
         include '../config/db.php';
-        $username = $conn->real_escape_string($_POST['usernamePHP']);
-        $passwd = strtolower(sha1($conn->real_escape_string($_POST['passwordPHP'])));
+        $sql = "SELECT id,username FROM users where username='$user' AND password='$pass'";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+        $res = $stmt->get_result();
+        return $res->fetch_assoc();
+    }   
 
-        $data = $conn->query("SELECT id from users WHERE username='$username' AND password= '$passwd'");
-        if($data->num_rows > 0){
-            /// everything ok 
-            while($row = $data->fetch_assoc()){
-                $id = $row['id'];
-            }
-            $_SESSION['loggedIn'] = 1;
-            $_SESSION['username'] = $username;
-            $_SESSION['uid'] = $id;
-            // header('location: ../../Queue/index.php');
-            exit('Login successful');
-        }else{
-            exit('username or password were not found!');
-        }
-
-    }
