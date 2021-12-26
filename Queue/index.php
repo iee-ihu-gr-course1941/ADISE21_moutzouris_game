@@ -15,15 +15,27 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="../src/js/join.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <title>Document</title>
 </head>
 <body>
     <br>
-    <a href="../Board/index.html">Join A Game</a>
+    <button id="joinGame" class="btn btn-info">Join a Game!</button>
     <br>
-    <a href="../src/api/logout.php">Logout</a>
+    <button class="btn btn-info"><a href="#">Check Leaderboard</a></button>
     <br>
-    <a href="#">Check Leaderboard</a>
+    <button class="btn btn-info"><a href="../src/api/logout.php">Logout</a></button>
+    <br>
+    <div class="userDiv">
+        <h4>Online Users</h4>
+        <ul class="list-group" id="users">
+
+        </ul>
+    </div>
+
 </body>
 </html>
 
