@@ -12,9 +12,9 @@ switch($r=array_shift($request)){
     case 'register':
         echo 'register';
         register($input);
-    case 'available':
+    case 'leaderboard':
         $availableUsers = array();
-        $users = checkAvail($method);
+        $users = leaderboard($method);
         while($row = $users->fetch_assoc()){
             array_push($availableUsers,$row);
         }
@@ -58,9 +58,9 @@ function register($input){
     }
 }
 
-function checkAvail($method){
+function leaderboard($method){
     if($method == 'GET'){
-        require 'onlineUsers.php';
+        require 'leaderboard.php';
         $users = showAvail();
         return $users;
     }

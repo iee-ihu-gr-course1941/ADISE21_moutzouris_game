@@ -25,12 +25,11 @@
     <br>
     <button id="joinGame" class="btn btn-info">Join a Game!</button>
     <br>
-    <button class="btn btn-info"><a href="#">Check Leaderboard</a></button>
-    <br>
     <button class="btn btn-info"><a href="../src/api/logout.php">Logout</a></button>
     <br>
+    <br>
     <div class="userDiv">
-        <h4>Online Users</h4>
+        <h4>Leaderboard</h4>
         <ul class="list-group" id="users">
 
         </ul>
@@ -38,7 +37,6 @@
         <thead>
             <tr>
             <th class="col">#</th>
-            <th class="col">Wins</th>
             <th class="col">Losses</th>
             </tr>
         </thead>
@@ -47,7 +45,12 @@
         </tbody>
         </table>
     </div>
-
+    <style>
+        a{
+            text-decoration : none;
+            color : black; 
+        }
+    </style>
 </body>
 </html>
 

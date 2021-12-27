@@ -4,7 +4,7 @@ session_start();
 
     function showAvail(){
         include '../config/db.php';
-        $sql = "SELECT username,wins,losses FROM users where loggedIn='1'";
+        $sql = "SELECT username,losses FROM users";
         $res = $conn->query($sql);
         return $res;
     }
