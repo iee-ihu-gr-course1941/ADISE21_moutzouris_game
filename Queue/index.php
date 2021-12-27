@@ -34,6 +34,18 @@
         <ul class="list-group" id="users">
 
         </ul>
+        <table class="table table-striped">
+        <thead>
+            <tr>
+            <th class="col">#</th>
+            <th class="col">Wins</th>
+            <th class="col">Losses</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+        </tbody>
+        </table>
     </div>
 
 </body>
