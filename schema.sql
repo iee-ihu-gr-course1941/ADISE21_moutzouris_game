@@ -4,7 +4,8 @@ CREATE TABLE users(
     password varchar(255) NOT NULL,
     email varchar(255) NOT NULL,
     wins int(11)  DEFAULT 0,
-    losses int(11)  DEFAULT 0
+    losses int(11)  DEFAULT 0,
+    loggedIn enum('0','1') DEFAULT '0'
 );
 
 CREATE TABLE board(
