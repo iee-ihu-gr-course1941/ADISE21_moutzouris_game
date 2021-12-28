@@ -5,8 +5,32 @@ $(document).ready( () => {
             type:'GET',
             dataType:'JSON',
             success: (data) => {
+                // data is an array of json objects such as
+                /*
+                    [
+                        {
+                            "username":"string",
+                            "wins"    :"int",
+                            "losses"  :"int",
+                        },
+                        {
+                            "username":"string",
+                            "wins"    :"int",
+                            "losses"  :"int",
+                        },
+                        {
+                            "username":"string",
+                            "wins"    :"int",
+                            "losses"  :"int",
+                        }
+                    ]
+                */
+               console.log(data)
                 createListofUsers(data)
             }
+        })
+        $('#joinGame').on('click',() =>{
+            console.log('join a game')
         })
 })
 
