@@ -37,18 +37,22 @@ function setRows(card, index) {
     // }
 
     if (index == 0 || index == 11) {
-        let newRow = document.createElement('div')
-        newRow.classList.add('row')
-        let newCol = document.createElement('div')
-        newCol.classList.add('col')
-        newCol.appendChild(card.getHTML())
-        newRow.appendChild(newCol)
-        playerHand.appendChild(newRow)
-    } else {
-        let currentRow = playerHand.lastChild
-        let newCol = document.createElement('div')
-        newCol.classList.add('col')
-        newCol.appendChild(card.getHTML())
-        currentRow.appendChild(newCol)
-    }
+        let newRow = document.createElement("div");
+        newRow.classList.add("row");
+        let newCol = document.createElement("div");
+        newCol.classList.add("col-2");
+        newCol.setAttribute("style", "margin-top:15px");
+        newCol.setAttribute("style", "padding:15px");
+        newCol.appendChild(card.getHTML());
+        newRow.appendChild(newCol);
+        playerHand.appendChild(newRow);
+      } else {
+        let currentRow = playerHand.lastChild;
+        let newCol = document.createElement("div");
+        newCol.classList.add("col-2");
+        newCol.setAttribute("style", "margin-top:15px");
+        newCol.setAttribute("style", "padding:15px");
+        newCol.appendChild(card.getHTML());
+        currentRow.appendChild(newCol);
+      }
 }

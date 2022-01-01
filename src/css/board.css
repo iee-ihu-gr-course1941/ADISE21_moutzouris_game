@@ -1,4 +1,3 @@
-
 .opponent-deck{
 		width: 90%;
 		padding: 20px;
@@ -27,7 +26,7 @@
     transform: scale(1.3);
 	background: red;
 	z-index: 2;
-	box-shadow: 2px 2px 2px
+	box-shadow: 2px 2px 2px;
 }
 .player-deck {
     display: flex;
@@ -63,8 +62,8 @@
 }
 
 .card::before{
-    top: .5rem;
-    left: .5rem;
+    top: 0.5rem;
+    left: 0.5rem;
 }
 
 .card::after{
