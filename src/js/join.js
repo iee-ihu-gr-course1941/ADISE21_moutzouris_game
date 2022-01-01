@@ -1,8 +1,9 @@
 let playersObject;
 let createListofUsersExecutedOnce = false;
+let playerCredentials;
 
 $(document).ready(() => {
-  $("#joinGame").click(checkForAvailablePlayers);
+  $("#joinGame").click(initGame);
   setInterval(reloadForPlayers, 1000);
 });
 
@@ -96,4 +97,21 @@ function refreshLeaderboard() {
       }
     }
   }
+}
+
+function initGame(e){
+    checkForAvailablePlayers(e)
+    let connectedPlayers = []
+    playersObject.forEach( (player) =>{
+        if(player.loggedIn == '1'){
+          connectedPlayers.push(player)
+        }
+    })
+    let opponent = selectRandomIndex(connectedPlayers)
+    console.log(opponent.username)
+    alert('You were paired with ' + opponent.username)
+}
+
+function selectRandomIndex(connectedPlayers){
+  return  connectedPlayers[Math.floor(Math.random()*connectedPlayers.length)];
 }

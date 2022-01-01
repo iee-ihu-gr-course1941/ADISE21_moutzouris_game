@@ -37,7 +37,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a id="joinGame" href="../Board/" class="btn btn-info disabled" role="button">Join a Game!</a>
+            <a id="joinGame" class="btn btn-info disabled" role="button">Join a Game!</a>
           </li>
           <li class="nav-item" style="margin-left: 10px;">
             <a class="btn btn-danger" role="button" href="../src/api/logout.php">Logout</a>

@@ -14,11 +14,13 @@ switch($r=array_shift($request)){
         register($input);
     case 'leaderboard':
         $availableUsers = array();
+        $otherUsers = array();
         $users = leaderboard($method);
         while($row = $users->fetch_assoc()){
             array_push($availableUsers,$row);
         }
         echo json_encode($availableUsers);
+   
 }
 
 function login($input){
