@@ -3,8 +3,8 @@ let createListofUsersExecutedOnce = false;
 let playerCredentials;
 
 $(document).ready(() => {
-  $("#joinGame").click(initGame);
-  setInterval(reloadForPlayers, 1000);
+  setInterval(reloadForPlayers,1000)
+  $('#joinGame').on('click',initGame)  
 });
 
 function reloadForPlayers() {
@@ -25,7 +25,6 @@ function createListofUsers(data) {
   //console.log(createListofUsersExecutedOnce);
   if (createListofUsersExecutedOnce == false) {
     createListofUsersExecutedOnce = true;
-    $("#joinGame").removeClass("disabled");
     let tbody = document.querySelector("tbody");
     if (tbody.children.length > 0) {
       tbody.remove();
@@ -101,17 +100,19 @@ function refreshLeaderboard() {
 
 function initGame(e){
     checkForAvailablePlayers(e)
-    let connectedPlayers = []
-    playersObject.forEach( (player) =>{
-        if(player.loggedIn == '1'){
-          connectedPlayers.push(player)
-        }
+    let index
+    let opponents
+    $.ajax({
+      url:'../src/api/initGame.php/onlineUsers',
+      type:'GET',
+      dataType:'JSON',
+      success:(data)=>{
+        createMatchup(data)
+      }
     })
-    let opponent = selectRandomIndex(connectedPlayers)
-    console.log(opponent.username)
-    alert('You were paired with ' + opponent.username)
 }
 
-function selectRandomIndex(connectedPlayers){
-  return  connectedPlayers[Math.floor(Math.random()*connectedPlayers.length)];
+function createMatchup(opponents){
+  let index = Math.floor(Math.random()*opponents.length)
+  alert("You were paired with "+ opponents[index])
 }
