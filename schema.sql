@@ -10,9 +10,9 @@ CREATE TABLE users(
 
 CREATE TABLE board(
   round int PRIMARY KEY,
-  p1_hand varchar(3),
-  p2_hand varchar(3),
-  doubles varchar(1)
+  p1_hand varchar(255),
+  p2_hand varchar(255),
+  doubles varchar(255)
 );
 
 CREATE TABLE game_status(
@@ -21,14 +21,3 @@ CREATE TABLE game_status(
   result enum ('1','2','D') DEFAULT NULL,
   last_change timestamp NULL DEFAULT NULL
 );
-
-CREATE TABLE deck ( 
-  suit VARCHAR(2) NOT NULL ,
-  value VARCHAR(1) NOT NULL 
-);
-
-INSERT into deck (suit,value) values 
-('♣','A'),('♣','2'),('♣','3'),('♣','4'),('♣','5'),('♣','6'),('♣','7'),('♣','8'),('♣','9'),('♣','10'),
-('♠','A'),('♠','2'),('♠','3'),('♠','4'),('♠','5'),('♠','6'),('♠','7'),('♠','8'),('♠','9'),('♠','10'),('♠','K'),
-('♥','A'),('♥','2'),('♥','3'),('♥','4'),('♥','5'),('♥','6'),('♥','7'),('♥','8'),('♥','9'),('♥','10'),
-('♦','A'),('♦','2'),('♦','3'),('♦','4'),('♦','5'),('♦','6'),('♦','7'),('♦','8'),('♦','9'),('♦','10');
