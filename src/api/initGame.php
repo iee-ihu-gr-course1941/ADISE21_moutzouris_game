@@ -11,6 +11,11 @@ switch(array_shift($request)){
         $_SESSION['joinGame'] = true;
         $opps = fetchOnlineUsers();
         echo json_encode($opps);
+    case 'initialize':
+        if($method == 'POST'){
+            init_game_status();
+        }
+
 }
 
 function fetchOnlineUsers(){
@@ -26,4 +31,9 @@ function fetchOnlineUsers(){
         }
     }
     return $opps;
+}
+
+function init_game_status(){
+    include 'updateGame.php';
+    initGameStatus();    
 }

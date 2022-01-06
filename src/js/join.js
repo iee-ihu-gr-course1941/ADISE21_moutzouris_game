@@ -100,19 +100,7 @@ function refreshLeaderboard() {
 
 function initGame(e){
     checkForAvailablePlayers(e)
-    let index
-    let opponents
-    $.ajax({
-      url:'../src/api/initGame.php/onlineUsers',
-      type:'GET',
-      dataType:'JSON',
-      success:(data)=>{
-        createMatchup(data)
-      }
-    })
+    window.location = '../Board/'
 }
 
-function createMatchup(opponents){
-  let index = Math.floor(Math.random()*opponents.length)
-  alert("You were paired with "+ opponents[index])
-}
+
