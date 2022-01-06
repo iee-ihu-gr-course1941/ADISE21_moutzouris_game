@@ -8,16 +8,15 @@ CREATE TABLE users(
     loggedIn enum('0','1') DEFAULT '0'
 );
 
-CREATE TABLE board(
-  round int PRIMARY KEY,
-  p1_hand varchar(255),
-  p2_hand varchar(255),
-  doubles varchar(255)
-);
+CREATE TABLE `board` (
+   `game_id` INT NOT NULL AUTO_INCREMENT , 
+   `p1_hand` JSON DEFAULT NULL , 
+   `p1_id` INT DEFAULT NULL , 
+   `p2_hand` JSON DEFAULT NULL , 
+   `p2_id` INT DEFAULT NULL , 
+   `result` INT DEFAULT NULL , 
+   PRIMARY KEY (`game_id`)) ENGINE = InnoDB;  
 
-CREATE TABLE game_status(
-    status enum('not active','initialized','started','ended','aborded') NOT NULL DEFAULT 'not active',
-    p_turn enum('1','2') DEFAULT NULL,
-  result enum ('1','2','D') DEFAULT NULL,
-  last_change timestamp NULL DEFAULT NULL
-);
+ALTER TABLE `board` ADD FOREIGN KEY (`p1_id`) REFERENCES `users`(`id`) ON DELETE RESTRICT ON UPDATE RESTRICT; 
+ALTER TABLE `board` ADD FOREIGN KEY (`p2_id`) REFERENCES `users`(`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+ALTER TABLE `board` ADD FOREIGN KEY (`result`) REFERENCES `users`(`id`) ON DELETE RESTRICT ON UPDATE RESTRICT; 
