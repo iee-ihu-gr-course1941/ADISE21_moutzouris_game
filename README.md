@@ -4,23 +4,19 @@ Table of Contents
       * [Απαιτήσεις](#απαιτήσεις)
       * [Οδηγίες Εγκατάστασης](#οδηγίες-εγκατάστασης)
       * [Περιγραφή Παιχνιδιού](#περιγραφή-παιχνιδιού)
+      * [Συντελεστές](#συντελεστές)
    * [Περιγραφή API](#περιγραφή-api)
       * [Methods](#methods)
+         * [Login](#login)
+         * [Register](#register)
+         * [Leaderboard](#leaderboard)
          * [Board](#board)
-            * [Ανάγνωση Board](#ανάγνωση-board)
-            * [Αρχικοποίηση Board](#αρχικοποίηση-board)
-         * [Piece](#piece)
-            * [Ανάγνωση Θέσης/Πιονιού](#ανάγνωση-θέσηςπιονιού)
-            * [Μεταβολή Θέσης Πιονιού](#μεταβολή-θέσης-πιονιού)
-         * [Player](#player)
-            * [Ανάγνωση στοιχείων παίκτη](#ανάγνωση-στοιχείων-παίκτη)
-            * [Καθορισμός στοιχείων παίκτη](#καθορισμός-στοιχείων-παίκτη)
-         * [Status](#status)
-            * [Ανάγνωση κατάστασης παιχνιδιού](#ανάγνωση-κατάστασης-παιχνιδιού)
-      * [Entities](#entities)
-         * [Board](#board-1)
-         * [Players](#players)
-         * [Game_status](#game_status)
+         * [First](#first)
+         * [Second](#second)
+         * [Hands](#hands)
+         * [Game](#game)
+         * [Update](#update)
+    
 
 
 # Demo Page
@@ -92,5 +88,54 @@ https://users.iee.ihu.gr/~asidirop/adise21/Lectures21-chess/
 
 ....
 
+# Περιγραφή API
 
+## Methods
+
+
+### Login
+```
+POST /login 
+```
+Αυθεντικοποιεί τον χρήστη και ξεκινά php session
+### Register
+```
+POST /register
+```
+Δημιουργεί νέο χρήστη
+### Leaderboard
+```
+GET /leaderboard
+```
+Επιστρέφει τις νίκες και ήττες για κάθε χρήστη
+### Board
+```
+GET /Board
+```
+Επιστρέφει ένα κενό πίνακα board
+### First
+```
+POST /First
+```
+Εισάγει στην στήλη p1_id
+### Second
+```
+POST /Second
+```
+Εισάγει στην στήλη p2_id
+### Hands
+```
+POST /Hands
+```
+Δημιουργεί την τράπουλα και την χωρίζει στα δύο αποθηκεύοντας αντίστοιχα στις στήλες p1_hand και p2_hand
+### Game
+```
+GET /Game
+```
+Επιστρέφει τον πίνακα board αφού έχει ξεκινήσει το παιχνίδι
+### Update
+```
+POST /Update
+```
+Ανανεώνει τις τιμές στον πίνακα board και ελέγχει αν τελείωσε το παιχνίδι
 
