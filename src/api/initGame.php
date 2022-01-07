@@ -28,6 +28,21 @@ switch(array_shift($request)){
         if($method == 'POST'){
             insertSecond();
         }
+    case 'Hands':
+        if($method == 'POST'){
+            $p1_hand = $input['p1_hand'];
+            $p2_hand = $input['p2_hand'];
+            $hand1 = '';
+            foreach($p1_hand as &$card){
+                $hand1 .= $card .',';
+            }
+            $hand2 = '';
+            foreach($p2_hand as &$card){
+                $hand2 .= $card .',';
+            }
+            // echo json_encode($hand2);
+            createHands($hand1,$hand2);
+        }
 }
 
 
@@ -62,6 +77,20 @@ function insertSecond(){
         $game_id = $row['game_id'];
     }
     $sql = "UPDATE board SET p2_id=$uid WHERE game_id=$game_id";
+    $stmt = $conn->prepare($sql);
+    $stmt->execute();
+}
+
+function createHands($p1_hand,$p2_hand){
+    require '../config/db.php';
+    $sql = "SELECT * FROM board ORDER BY game_id DESC LIMIT 1";
+    $stmt = $conn->prepare($sql);
+    $stmt->execute();
+    $res = $stmt->get_result();
+    while($row = $res->fetch_assoc()){
+        $game_id = $row['game_id'];
+    }
+    $sql = "UPDATE board SET p1_hand = '$p1_hand' , p2_hand = '$p2_hand' WHERE game_id = $game_id";
     $stmt = $conn->prepare($sql);
     $stmt->execute();
 }

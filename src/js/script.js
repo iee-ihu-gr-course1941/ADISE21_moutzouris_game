@@ -1,5 +1,15 @@
 import Deck from '../modules/deck.js'
 
+let user = {}
+let gameMessage = document.querySelector('.gameMessage')
+let startBtn = document.querySelector('#start')
+let deck = new Deck()
+deck.shuffle()
+let deckMidpoint = Math.ceil(deck.numberOfCards / 2)
+let playerDeck = new Deck(deck.cards.slice(0, deckMidpoint))
+let opponentDeck = new Deck(deck.cards.slice(deckMidpoint, deck.numberOfCards))
+
+
 /*
     1. when user clicks start game ---> GET initGame.php/board which gets te last row inserted 
     SELECT SELECT * FROM Table ORDER BY ID DESC LIMIT 1
@@ -28,6 +38,7 @@ $(document).ready(()=>{
 })
 
 function initGame(){
+    startBtn.style.visibility = 'hidden'
     $.ajax({
         url:'../src/api/initGame.php/Board',
         type:'GET',
@@ -35,15 +46,10 @@ function initGame(){
         dataType:'JSON',
         success:(data)=>{
             if(Object.keys(data).length ==0){
-                console.log('1st player')
                 insertNew()
             }else{
-                if(data.p2_id == null){
-                    console.log('2nd player')
-                    insertSecond()
-                }
+                insertSecond()
             }
-            startGame()
         },
         error:(response)=>{console.log(response)}
     })
@@ -55,10 +61,8 @@ function insertNew(){
         type:'POST',
         contentType:'application/json',
         dataType:'JSON',
-        success:()=>{
-            console.log('ok')
-        }
     })
+    startGame('First')
 }
 
 function insertSecond(){
@@ -67,21 +71,45 @@ function insertSecond(){
         type:'POST',
         contentType:'application/json',
         dataType:'JSON',
-        success:()=>{
-            console.log('ok')
-        }
+    })
+    startGame('Second')
+}
+
+
+function startGame(player){
+    console.log(player)
+    if(player == 'First'){
+        updateGameMessage('Wait for second player')
+    }else{
+        updateGameMessage('Game Begins')
+        createHands()
+    }
+}
+
+function createHands(){
+    let p1_hand=[],p2_hand=[]
+    playerDeck.cards.forEach((card)=>{
+        p1_hand.push(card.value+card.suit)
+    })
+    opponentDeck.cards.forEach((card)=>{
+        p2_hand.push(card.value+card.suit)
+    })
+    const board = JSON.stringify({
+        'p1_hand' : p1_hand,
+        'p2_hand' : p2_hand
+    })
+    console.log(board)
+    $.ajax({
+        url:'../src/api/initGame.php/Hands',
+        type:'POST',
+        contentType:'application/json',
+        dataType:'JSON',
+        data: board
     })
 }
 
 
-function startGame(){
-    $.ajax({
-        url:'../src/api/initGame.php/Board',
-        type:'GET',
-        contentType:'application/json',
-        dataType:'JSON',
-        success:(data)=>{
-            console.log(data)
-        }
-    })
+
+function updateGameMessage(message){
+    gameMessage.innerHTML = message
 }

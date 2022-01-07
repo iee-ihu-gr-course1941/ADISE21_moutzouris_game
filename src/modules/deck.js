@@ -1,4 +1,4 @@
-const SUITS = ["♠", "♣", "♥", "♦"]
+const SUITS = ["S", "C", "H", "D"]
 const VALUES = [
     "A",
     "2",

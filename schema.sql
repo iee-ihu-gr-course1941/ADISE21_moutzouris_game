@@ -10,13 +10,10 @@ CREATE TABLE users(
 
 CREATE TABLE `board` (
    `game_id` INT NOT NULL AUTO_INCREMENT , 
-   `p1_hand` JSON DEFAULT NULL , 
+   `p1_hand` varchar(255) DEFAULT NULL , 
    `p1_id` INT DEFAULT NULL , 
-   `p2_hand` JSON DEFAULT NULL , 
+   `p2_hand` varchar(255) DEFAULT NULL , 
    `p2_id` INT DEFAULT NULL , 
    `result` INT DEFAULT NULL , 
    PRIMARY KEY (`game_id`)) ENGINE = InnoDB;  
 
-ALTER TABLE `board` ADD FOREIGN KEY (`p1_id`) REFERENCES `users`(`id`) ON DELETE RESTRICT ON UPDATE RESTRICT; 
-ALTER TABLE `board` ADD FOREIGN KEY (`p2_id`) REFERENCES `users`(`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
-ALTER TABLE `board` ADD FOREIGN KEY (`result`) REFERENCES `users`(`id`) ON DELETE RESTRICT ON UPDATE RESTRICT; 
