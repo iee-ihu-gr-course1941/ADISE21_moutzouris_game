@@ -1,6 +1,6 @@
 import Deck from '../modules/deck.js'
 
-let user = {}
+let user,p_turn=''
 let gameMessage = document.querySelector('.gameMessage')
 let startBtn = document.querySelector('#start')
 let deck = new Deck()
@@ -80,10 +80,14 @@ function startGame(player){
     console.log(player)
     if(player == 'First'){
         updateGameMessage('Wait for second player')
+        user = 1
     }else{
         updateGameMessage('Game Begins')
+        user = 2
         createHands()
     }
+    console.log('You are user '+user)
+    
 }
 
 function createHands(){
@@ -114,8 +118,6 @@ function createHands(){
         data: board
     })
 }
-
-
 
 function updateGameMessage(message){
     gameMessage.innerHTML = message
