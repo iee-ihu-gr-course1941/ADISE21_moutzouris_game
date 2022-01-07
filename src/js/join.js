@@ -1,9 +1,10 @@
 let playersObject;
 let createListofUsersExecutedOnce = false;
+let playerCredentials;
 
 $(document).ready(() => {
-  $("#joinGame").click(checkForAvailablePlayers);
-  setInterval(reloadForPlayers, 1000);
+  setInterval(reloadForPlayers,1000)
+  $('#joinGame').on('click',initGame)  
 });
 
 function reloadForPlayers() {
@@ -24,7 +25,6 @@ function createListofUsers(data) {
   //console.log(createListofUsersExecutedOnce);
   if (createListofUsersExecutedOnce == false) {
     createListofUsersExecutedOnce = true;
-    $("#joinGame").removeClass("disabled");
     let tbody = document.querySelector("tbody");
     if (tbody.children.length > 0) {
       tbody.remove();
@@ -97,3 +97,10 @@ function refreshLeaderboard() {
     }
   }
 }
+
+function initGame(e){
+    checkForAvailablePlayers(e)
+    window.location = '../Board/'
+}
+
+

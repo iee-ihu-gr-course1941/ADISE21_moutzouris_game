@@ -6,6 +6,7 @@ if($input==null) {
     $input=[];
 }
 
+
 switch($r=array_shift($request)){
     case 'login':
         login($input);
