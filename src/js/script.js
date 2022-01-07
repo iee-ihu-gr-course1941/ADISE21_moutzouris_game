@@ -94,11 +94,18 @@ function createHands(){
     opponentDeck.cards.forEach((card)=>{
         p2_hand.push(card.value+card.suit)
     })
+    const randomTurn = Math.floor(Math.random() * (10 - 1 + 1) + 1)
+    let turn
+    if(randomTurn < 6){
+        turn = 1
+    }else{
+        turn = 2
+    }
     const board = JSON.stringify({
         'p1_hand' : p1_hand,
-        'p2_hand' : p2_hand
+        'p2_hand' : p2_hand,
+        'p_turn'  : turn
     })
-    console.log(board)
     $.ajax({
         url:'../src/api/initGame.php/Hands',
         type:'POST',

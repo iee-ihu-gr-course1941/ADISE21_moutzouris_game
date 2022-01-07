@@ -32,6 +32,7 @@ switch(array_shift($request)){
         if($method == 'POST'){
             $p1_hand = $input['p1_hand'];
             $p2_hand = $input['p2_hand'];
+            $p_turn = $input['p_turn'];
             $hand1 = '';
             foreach($p1_hand as &$card){
                 $hand1 .= $card .',';
@@ -41,7 +42,7 @@ switch(array_shift($request)){
                 $hand2 .= $card .',';
             }
             // echo json_encode($hand2);
-            createHands($hand1,$hand2);
+            createHands($hand1,$hand2,$p_turn);
         }
 }
 
@@ -81,7 +82,7 @@ function insertSecond(){
     $stmt->execute();
 }
 
-function createHands($p1_hand,$p2_hand){
+function createHands($p1_hand,$p2_hand,$p_turn){
     require '../config/db.php';
     $sql = "SELECT * FROM board ORDER BY game_id DESC LIMIT 1";
     $stmt = $conn->prepare($sql);
@@ -90,7 +91,7 @@ function createHands($p1_hand,$p2_hand){
     while($row = $res->fetch_assoc()){
         $game_id = $row['game_id'];
     }
-    $sql = "UPDATE board SET p1_hand = '$p1_hand' , p2_hand = '$p2_hand' WHERE game_id = $game_id";
+    $sql = "UPDATE board SET p1_hand = '$p1_hand' , p2_hand = '$p2_hand', p_turn = '$p_turn' WHERE game_id = $game_id";
     $stmt = $conn->prepare($sql);
     $stmt->execute();
 }
