@@ -51,4 +51,44 @@ function setRows(card, index) {
         newCol.appendChild(card.getHTML())
         currentRow.appendChild(newCol)
     }
+<<<<<<< Updated upstream
 }
+=======
+    console.log('You are user '+user)
+    
+}
+
+function createHands(){
+    let p1_hand=[],p2_hand=[]
+    playerDeck.cards.forEach((card)=>{
+        p1_hand.push(card.value+card.suit)
+    })
+    opponentDeck.cards.forEach((card)=>{
+        p2_hand.push(card.value+card.suit)
+    })
+    const randomTurn = Math.floor(Math.random() * (10 - 1 + 1) + 1)
+    let turn
+    if(randomTurn < 6){
+        turn = 1
+    }else{
+        turn = 2
+    }
+    const board = JSON.stringify({
+        'p1_hand' : p1_hand,
+        'p2_hand' : p2_hand,
+        'p_turn'  : turn
+    })
+    $.ajax({
+        url:'../src/api/initGame.php/Hands',
+        type:'POST',
+        contentType:'application/json',
+        dataType:'JSON',
+        data: board
+    })
+}
+
+function updateGameMessage(message){
+    gameMessage.innerHTML = message
+}
+
+>>>>>>> Stashed changes
