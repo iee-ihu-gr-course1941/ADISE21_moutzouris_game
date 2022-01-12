@@ -51,7 +51,7 @@ $(document).ready(()=>{
     console.log('INSERT INTO game_status(status,p_turn,result,last_change) VALUES (started, random(1,2), null, Date.now)')
     createDeck()
     $('#start').on('click',startGame)
-    //$('#card').on('click',updateCards) // update cards gia kathe gyro
+    $('#card').on('click',updateCards) // update cards gia kathe gyro
 })
 
 function startGame(){
@@ -150,7 +150,6 @@ function round(){
         }
     }        
 }
-/*
 function updateCards(){ //se kathe gyro
     round()
     const board = JSON.stringify({
@@ -175,4 +174,6 @@ function updateCards(){ //se kathe gyro
         },
         error:(response)=>{console.log(response)}
     })
-} */
+} 
+
+}
