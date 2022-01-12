@@ -78,13 +78,12 @@ https://users.iee.ihu.gr/~asidirop/adise21/Lectures21-chess/
 
 ## Συντελεστές
 
-Περιγράψτε τις αρμοδιότητες της ομάδας.
 
-Στυλιανός Ανδρέου: Σχεδιασμός mysql Βάσης Δεδομένων
+[Στυλιανός Ανδρέου](https://github.com/Lian48) : Σχεδιασμός mysql Βάσης Δεδομένων
 
-Χατζηπουργάνης Δημήτριος: Σχεδίαση UI, Frontend
+[Χατζηπουργάνης Δημήτριος](https://github.com/dchatzip) : Σχεδίαση UI, Frontend
 
-Ραδής Τουμπαλίδης: Σχεδιασμός Frontend, PHP API
+[Ραδής Τουμπαλίδης](https://github.com/radistoubalidis): Σχεδιασμός Frontend, PHP API
 
 ....
 
