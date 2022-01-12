@@ -96,11 +96,23 @@ https://users.iee.ihu.gr/~asidirop/adise21/Lectures21-chess/
 ### Login
 ```
 POST /login 
+json data
+{
+  login : 1
+  "usernamePHP":"username",
+  "passwordPHP":"password",
+}
 ```
 Αυθεντικοποιεί τον χρήστη και ξεκινά php session
 ### Register
 ```
 POST /register
+json data
+{
+  "usernamePHP":"username",
+  "passwordPHP":"password",
+  "emailPHP":"email"
+}
 ```
 Δημιουργεί νέο χρήστη
 ### Leaderboard
@@ -116,16 +128,24 @@ GET /Board
 ### First
 ```
 POST /First
+no json data
 ```
 Εισάγει στην στήλη p1_id
 ### Second
 ```
 POST /Second
+no json data
 ```
 Εισάγει στην στήλη p2_id
 ### Hands
 ```
 POST /Hands
+json data
+{
+  "p1_hand":"string",
+  "p2_hand":"string",
+  "p_turn" : int,
+}
 ```
 Δημιουργεί την τράπουλα και την χωρίζει στα δύο αποθηκεύοντας αντίστοιχα στις στήλες p1_hand και p2_hand
 ### Game
@@ -136,6 +156,57 @@ GET /Game
 ### Update
 ```
 POST /Update
+json data
+if end of game
+{
+    "new_p1_hand": "" || "KS",
+    "new_p2_hand": "KS" | "",
+    "new_p_turn" : null
+}
+if not end of game
+{
+  "new_p1_hand": "string",
+    "new_p2_hand": "string",
+    "new_p_turn" : int
+}
 ```
 Ανανεώνει τις τιμές στον πίνακα board και ελέγχει αν τελείωσε το παιχνίδι
+
+
+## Entities
+
+
+### Users
+---------
+
+Το board είναι ένας πίνακας, ο οποίος στο κάθε στοιχείο έχει τα παρακάτω:
+
+
+| Attribute                | Description                                  | Values                              |
+| ------------------------ | -------------------------------------------- | ----------------------------------- |
+| `id`                     | Το προσωπικό id του κάθε χρήστη              | int                                |
+| `username`               | ..                                           | varchar(255)                                |
+| `password`               |  ..                                            | varchar(255)                          |
+| `email`                  |    ..                                          | varchar(255)                       |
+| `wins`                   | Νίκες του χρήστη            | int      |
+| `losses`                 |           Ήττες του χρήστη                                  |      int                               |
+|`loggedIn` | Περιγράφει αν είναι online ο χρήστης | enum('0','1') |
+
+
+### Players
+---------
+
+O κάθε παίκτης έχει τα παρακάτω στοιχεία:
+
+
+| Attribute                | Description                                  | Values                              |
+| ------------------------ | -------------------------------------------- | ----------------------------------- |
+| `game_id`               | Το προσωπικό id του κάθε παιχνιδιού                                 | int                              |
+| `p1_hand`            | το χέρι του παίκτη 1 σε κάθε γύρο                | string array                             |
+| `p1_id  `                | Το προσωπικό id του παίκτη 1 | int |
+| `p2_hand`            | το χέρι του παίκτη 2 σε κάθε γύρο                | string array                             |
+| `p2_id  `                | Το προσωπικό id του παίκτη 2 | int |
+| `p_turn  `                | To id του παίκτη που έχει σειρά | int |
+| `result  `                | To id του νικητή | default null enum('p1_id','p2_id) |
+
 
