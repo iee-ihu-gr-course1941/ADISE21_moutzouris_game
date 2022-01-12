@@ -21,8 +21,8 @@ Table of Contents
 
 # Demo Page
 
-Μπορείτε να κατεβάσετε τοπικά ή να επισκευτείτε την σελίδα : 
-[https://users.iee.ihu.gr/~it185289/](https://users.iee.ihu.gr/~it185289/)
+Μπορείτε να κατεβάσετε τοπικά ή να επισκευτείτε την σελίδα: 
+https://users.iee.ihu.gr/~asidirop/adise21/Lectures21-chess/
 
 
 
