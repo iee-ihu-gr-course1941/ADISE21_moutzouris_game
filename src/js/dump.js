@@ -51,6 +51,7 @@ $(document).ready(()=>{
     console.log('INSERT INTO game_status(status,p_turn,result,last_change) VALUES (started, random(1,2), null, Date.now)')
     createDeck()
     $('#start').on('click',startGame)
+    $('#card').on('click',updateCards) // update cards gia kathe gyro
 })
 
 function startGame(){
@@ -148,4 +149,31 @@ function round(){
             
         }
     }        
+}
+function updateCards(){ //se kathe gyro
+    round()
+    const board = JSON.stringify({
+        'p1_hand' : board.p1_hand,
+        'p2_hand' : board.p2_hand,
+        'p_turn'  : game_status.p_turn
+    })
+    $.ajax({
+        url:'../src/api/inGame.php/Update',
+        type:'POST',
+        data: board,
+        contentType:'application/json',
+        dataType:'JSON',
+        success:(data)=>{
+          if(p1_hand == ''){
+              alert("Player 1 is the winner");
+              window.location.replace("../src/api/initGame.php/Board");
+          }else if(p2_hand == ''){
+              alert("Player 2 is the winner");
+              window.location.replace("../src/api/initGame.php/Board");
+          }
+        },
+        error:(response)=>{console.log(response)}
+    })
+} 
+
 }
