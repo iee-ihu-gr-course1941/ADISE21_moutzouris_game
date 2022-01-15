@@ -150,6 +150,7 @@ function round(){
         }
     }        
 }
+
 function updateCards(){ //se kathe gyro
     round()
     const board = JSON.stringify({
@@ -174,6 +175,4 @@ function updateCards(){ //se kathe gyro
         },
         error:(response)=>{console.log(response)}
     })
-} 
-
 }
