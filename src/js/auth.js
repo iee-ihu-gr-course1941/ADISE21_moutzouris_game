@@ -7,7 +7,7 @@ $(document).ready(function () {
             alert('Please insert proper data')
         else {
             $.ajax({
-                url: './src/api/gofish.php/login',
+                url: '../src/api/gofish.php/login',
                 method: 'POST',
                 contentType: 'application/json',
                 data: JSON.stringify({
