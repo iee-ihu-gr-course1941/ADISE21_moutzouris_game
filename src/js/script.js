@@ -86,9 +86,6 @@ function startGame(player){
         user = 2
         createHands()
     }
-
-}
-
     console.log('You are user '+user)
     
 }
@@ -125,4 +122,3 @@ function createHands(){
 function updateGameMessage(message){
     gameMessage.innerHTML = message
 }
-

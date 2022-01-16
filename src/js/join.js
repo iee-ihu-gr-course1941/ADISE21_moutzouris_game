@@ -102,5 +102,3 @@ function initGame(e){
     checkForAvailablePlayers(e)
     window.location = '../Board/'
 }
-
-
